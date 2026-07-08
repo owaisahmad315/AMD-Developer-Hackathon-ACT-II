@@ -1,0 +1,151 @@
+/* ─── Scanning Overlay ───────────────────────────── */
+.scanning-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 191, 191, 0.02) 0%,
+    rgba(0, 191, 191, 0.04) 50%,
+    rgba(0, 191, 191, 0.02) 100%
+  );
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* ─── Main Scanning Line ─────────────────────────── */
+.scan-line-main {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 191, 191, 0.4) 15%,
+    rgba(0, 191, 191, 0.8) 50%,
+    rgba(0, 191, 191, 0.4) 85%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 12px rgba(0, 191, 191, 0.6),
+    0 0 24px rgba(0, 191, 191, 0.3),
+    inset 0 0 8px rgba(0, 191, 191, 0.5);
+  filter: blur(0.8px);
+  animation: scanDown 3s ease-in-out infinite;
+  z-index: 3;
+}
+
+/* ─── Secondary Scan Lines ───────────────────────── */
+.scan-line-secondary {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 191, 191, 0.25) 30%,
+    rgba(0, 191, 191, 0.25) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px rgba(0, 191, 191, 0.3);
+  animation: scanDown 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+.scan-line-secondary-1 {
+  animation-delay: 0.4s;
+  opacity: 0.6;
+}
+
+.scan-line-secondary-2 {
+  animation-delay: 0.8s;
+  opacity: 0.4;
+}
+
+/* ─── Scanning Glow ──────────────────────────────── */
+.scan-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 120px;
+  background: radial-gradient(
+    ellipse 60px 60px at center,
+    rgba(0, 191, 191, 0.15) 0%,
+    rgba(0, 191, 191, 0.05) 50%,
+    transparent 100%
+  );
+  filter: blur(8px);
+  animation: scanDown 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* ─── Grid Overlay ───────────────────────────────── */
+.scan-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* ─── Scanning Text Indicator ────────────────────── */
+.scan-text {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(45, 45, 45, 0.8);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 191, 191, 0.4);
+  box-shadow:
+    0 0 12px rgba(0, 191, 191, 0.25),
+    inset 0 0 8px rgba(0, 191, 191, 0.08);
+  z-index: 5;
+  animation: textPulse 1.5s ease-in-out infinite;
+}
+
+.scan-text span {
+  letter-spacing: 0.5px;
+}
+
+/* ─── Animations ─────────────────────────────────── */
+@keyframes scanDown {
+  0% {
+    top: -20px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.05);
+  }
+}

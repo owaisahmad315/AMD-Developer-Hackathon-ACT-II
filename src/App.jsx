@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
 import './App.css'
 import BackgroundAnimation from './BackgroundAnimation'
+import ScanningOverlay from './ScanningOverlay'
 
 function App() {
   const [image, setImage] = useState(null)
@@ -178,6 +179,7 @@ function App() {
               {preview ? (
                 <div className="preview-wrapper">
                   <img src={preview} alt="Selected scan" className="preview-img" />
+                  <ScanningOverlay isActive={isAnalyzing} />
                   <button className="remove-btn" onClick={(e) => { e.stopPropagation(); handleReset() }} aria-label="Remove image">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
