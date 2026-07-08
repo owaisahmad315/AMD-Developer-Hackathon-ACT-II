@@ -61,7 +61,7 @@ function App() {
     setResult(null)
     setApiError(null)
 
-    const API_ENDPOINT = 'https://YOUR_API_ENDPOINT_HERE/analyse' // TODO: replace
+    const API_ENDPOINT = 'http://localhost:8000/upload-image' // TODO: replace
 
     const formData = new FormData()
     formData.append('image', image)
